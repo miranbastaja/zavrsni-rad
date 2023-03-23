@@ -9,16 +9,25 @@
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs @ { flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
+  outputs = inputs @ {flake-parts, ...}:
+    flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux"];
       imports = [
         inputs.devshell.flakeModule
+        inputs.pre-commit-hooks.flakeModule
       ];
 
-      perSystem = {pkgs, ...}: let
+      perSystem = {
+        pkgs,
+        config,
+        ...
+      }: let
         srcfile = "main.typ";
         outfile = "Završni rad.pdf";
       in {
@@ -39,9 +48,12 @@
 
         devshells.default = {
           name = "zavrsni-sh";
+          devshell.startup.pre-commit-install.text =
+            config.pre-commit.installationScript;
 
-            commands = [
-            { package = pkgs.lazygit; }
+          commands = [
+            {package = pkgs.lazygit;}
+            {package = pkgs.typst;}
             {
               name = "build";
               help = "Compile the typst code into a PDF";
@@ -67,7 +79,17 @@
               '';
             }
           ];
-        };
+        }; # end of devshells.default
+
+        formatter = pkgs.alejandra;
+        pre-commit = {
+          check.enable = true;
+          settings.hooks = {
+            alejandra.enable = true;
+            statix.enable = true;
+            deadnix.enable = true;
+          };
+        }; # end of pre-commit
       }; # end of perSystem
     }; # end of flake-parts.lib.mkFlake
 }
