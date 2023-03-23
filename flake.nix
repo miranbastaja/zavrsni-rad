@@ -28,12 +28,12 @@
           src = ./.;
           buildInputs = [pkgs.typst];
           buildPhase = ''
-            typst $srcfile "$outfile"
+            typst ${srcfile} "${outfile}"
           '';
           installPhase = ''
             source $stdenv/setup
             mkdir -p "$out"
-            mv "$outfile" "$out/"
+            mv "${outfile}" "$out/"
           '';
         };
 

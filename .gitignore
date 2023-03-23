@@ -1,5 +1,8 @@
 # Typst output
 *.pdf
 
+# Nix
+result
+
 # Direnv outputs
 .direnv/
