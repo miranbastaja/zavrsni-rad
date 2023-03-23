@@ -1,0 +1,5 @@
+# Typst output
+*.pdf
+
+# Direnv outputs
+.direnv/
