@@ -17,28 +17,55 @@
       imports = [
         inputs.devshell.flakeModule
       ];
-      perSystem = {pkgs, ...}: {
+
+      perSystem = {pkgs, ...}: let
+        srcfile = "main.typ";
+        outfile = "Završni rad.pdf";
+      in {
         packages.default = pkgs.stdenv.mkDerivation {
           pname = "zavrsni-rad";
           version = "0.0.1";
           src = ./.;
           buildInputs = [pkgs.typst];
           buildPhase = ''
-            typst main.typ "Završni rad.pdf"
+            typst $srcfile "$outfile"
           '';
           installPhase = ''
             source $stdenv/setup
             mkdir -p "$out"
-            mv "Završni rad.pdf" "$out/"
+            mv "$outfile" "$out/"
           '';
         };
 
         devshells.default = {
           name = "zavrsni-sh";
 
-          commands = [
-            { package = pkgs.typst; }
+            commands = [
             { package = pkgs.lazygit; }
+            {
+              name = "build";
+              help = "Compile the typst code into a PDF";
+              category = "development";
+              command = ''
+                ${pkgs.typst}/bin/typst ${srcfile} "${outfile}"
+              '';
+            }
+            {
+              name = "develop";
+              help = "Watch the inputs and recompile the PDF on changes";
+              category = "development";
+              command = ''
+                ${pkgs.typst}/bin/typst --watch ${srcfile} "${outfile}"
+              '';
+            }
+            {
+              name = "clean";
+              help = "Clean up build results";
+              category = "development";
+              command = ''
+                rm "${outfile}"
+              '';
+            }
           ];
         };
       }; # end of perSystem
