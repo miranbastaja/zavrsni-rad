@@ -3,6 +3,7 @@
 
 # Nix
 result
+/.pre-commit-config.yaml
 
 # Direnv outputs
 .direnv/
