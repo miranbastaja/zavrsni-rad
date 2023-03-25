@@ -98,6 +98,44 @@ ključevima. @shema prikazuje dijagram pune sheme baze podataka.
 	caption: [Dijagram sheme baze podataka]
 ) <shema>
 
+== Model korisnika
+Korisnika obilježavaju jednistveno korisničko ime i jedinstvena adresa za
+e-poštu. U bazi podataka se za primarni ključ koristi redak zvan `user_id` koji
+sadržava identifikacijske kodove u UUIDv4 formatu. Uz ta polja postoje još i
+`status` koji obilježava je li korisnik potvrdio adresu za e-poštu, `api_key`
+koji sprema API ključ koji korisnik može upotrijebiti prilikom korištenja API
+servisa, `password_hash` koji sprema kriptografski hash lozinke i `created_at`
+koji sprema kada je korisnik registrirao račun.
+
+=== Korisnička imena
+Korisničko ime je niz alfanumeričkih znakova dug od 1 znaka do 64 znaka.
+Ne smiju sadržavati razmake i moraju biti jednistvena tj. ne mogu postojati dva
+korisnika sa istim korisničkim imenom. Primjeri pravilnih korisničkih imena su
+`peroperic11`, `2fast4u`, `throwaway12312` itd.
+
+=== Lozinke
+Kada se korisnik registrira mora postaviti lozinku. Sustav trenutačno zahtijeva
+da su lozinke između 8 i 128 znakova dugačke. Lozinke se u bazi podataka
+spremaju samo nakon što su provedene kroz argon2 hash algoritam koji preporučava
+OWASP.
+
+Limitacija na maksimalnu dužinu lozinke postavljena je kako bi se spriječili
+napadi odbijanjem usluge (engl. „denial of service attack”). Bez limitacije,
+zlonamjerni korisnik bi mogao poslužitelju poslati dugačku lozinku (> 1000
+znakova) koju bi poslužitelj onda morao hashati što bi zauzelo značajnu količinu
+vremena i resursa.
+
+=== Adresa e-pošte i status
+Pri registraciji svaki korisnik mora unjeti adresu e-pošte, međutim sustav u
+trenutku registracije ne može potvrditi da je korisnik zapravo posjeduje adresu
+koju je unio, i zato dodjeljuje korisniku status `unconfirmed`. Tada servis za
+korisničko sučelje pošalje e-pismo koje sadrži poveznicu za potvrđivanje
+računa. Kako bi korisnički račun dobio status `confirmed` korisnik mora
+jednostavno posjetiti poveznicu koja se nalazi u navedenom e-pismu, time
+potvrđujući da je uistinu vlasnik te adrese. U slučaju da poveznica ne radi
+korisnik uvijek može u postavkama zatražiti da im se ponovo pošalje e-pismo s
+novom poveznicom.
+
 = API servis
 TODO
 
