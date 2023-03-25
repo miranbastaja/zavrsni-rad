@@ -136,6 +136,44 @@ potvrđujući da je uistinu vlasnik te adrese. U slučaju da poveznica ne radi
 korisnik uvijek može u postavkama zatražiti da im se ponovo pošalje e-pismo s
 novom poveznicom.
 
+== Model zadatka
+Zadaci (engl. „tasks”) su, u suštini, osnovni sadržaj koji ovaj sustav
+korisnicima pomaže menažirati i spremati, a obilježava ih naslov, sadržaj,
+status i identifikacijski kod korisnika kojem taj zadatak pripada. U korisničkom
+sučelju na stranici za zadatke (`/tasks` ruta) isprva se vidi samo naslov svakog
+zadatka, a sadržaj se vidi tek nakon što korisnik mišem pritisne na zadatak.
+Uz ta polja u bazi se sprema još i identifikacijski kod zadatka u `task_id`
+polju i vrijeme kada je zadatak stvoren u `created_at` polju.
+
+=== Naslov
+Naslov zadatka je niz znakova koji, za razliku od korisničkih imena, smije
+sadržavati razmake i posebne znakove. Naslovi su limitirani po dužini, smiju
+biti najviše 64 znaka dugački. Pri stvaranju novog zadatka razmaci se skidaju
+s početka i kraja naslova jer nema razloga da postoje na tim mjestima.
+
+=== Sadržaj
+Sadržaj zadatka je, isto kao i naslov, niz znakova koji može sadržavati
+posebne znakove. Međutim, za razliku od naslova sadržaj ima dopušta puno veću
+dužinu. Maksimalna dužina sadržaja zadatka je sto tisuća znakova.
+Sadržaj zadatka je u potpunosti opcionalan i korisnik ga ne mora postaviti ako
+misli da im je naslov dovoljno detaljan da opiše zadatak. U bazi podataka
+sadržaj zadatka se sprema u `text` polju.
+
+=== Status
+Polje `status` u bazi podataka obilježava je li zadatak izvršen.
+Moguće vrijednosti `status` polja su `incomplete`, koji je dodijeljen svim
+zadacima kada su napravljeni, i `complete`, koji korisnik može dodati zadatku
+kako bi označio da je izvršen.
+
+=== Identifikacijski kod korisnika
+U `user_id` polju `tasks` tablice sprema se identifikacijski kod korisnika
+kojemu taj zadatak pripada. Svaki zadatak obavezno mora imati asociranog
+korisnika, a to osigurava PostgreSQL mehanizmom stranih ključeva.
+Navedeno `user_id` polje u `tasks` tablici je zapravo strani ključ na `user_id`
+polje u `users` tablici. Ova veza je jedan prema više (engl. „one to many”) veza
+što znači da korisnik može imati više zadataka, no svaki zadatak može
+posjedovati samo jedan korisnik.
+
 = API servis
 TODO
 
