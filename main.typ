@@ -83,6 +83,21 @@ aplikacije pošto ne moramo dva puta kod za poslovnu logiku
 == Arhitektura web aplikacije u actix-web frameworku
 TODO
 
+= Model podataka
+U bilo kojem softverskom sistemu najlakši način za razumjeti što sistem radi
+je znati koje informacije sprema i kako sprema te informacije. U ovom slučaju
+sve dugotrajne informacije su spremljene u PostgreSQL bazi podataka.
+Shema baze podataka se sastoji od tri tablice - `users`, `tasks` i
+`user_tokens`. Baza podataka je normalizirana i tablice su povezane stranim
+ključevima. @shema prikazuje dijagram pune sheme baze podataka.
+
+// TODO: make typst use other word than Figure in the caption, currently not
+// possible but will be https://github.com/typst/typst/pull/283 gets merged
+#figure(
+	image("img/db_schema.png"),
+	caption: [Dijagram sheme baze podataka]
+) <shema>
+
 = API servis
 TODO
 
