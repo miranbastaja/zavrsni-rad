@@ -7,7 +7,7 @@
 
 #outline(
 	title: "Sadržaj",
-	depth: 2,
+	depth: 3,
 	indent: true,
 )
 
@@ -107,13 +107,13 @@ koji sprema API ključ koji korisnik može upotrijebiti prilikom korištenja API
 servisa, `password_hash` koji sprema kriptografski hash lozinke i `created_at`
 koji sprema kada je korisnik registrirao račun.
 
-=== Korisnička imena
+=== Korisničko ime
 Korisničko ime je niz alfanumeričkih znakova dug od 1 znaka do 64 znaka.
 Ne smiju sadržavati razmake i moraju biti jednistvena tj. ne mogu postojati dva
 korisnika sa istim korisničkim imenom. Primjeri pravilnih korisničkih imena su
 `peroperic11`, `2fast4u`, `throwaway12312` itd.
 
-=== Lozinke
+=== Lozinka
 Kada se korisnik registrira mora postaviti lozinku. Sustav trenutačno zahtijeva
 da su lozinke između 8 i 128 znakova dugačke. Lozinke se u bazi podataka
 spremaju samo nakon što su provedene kroz argon2 hash algoritam koji preporučava
