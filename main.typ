@@ -1,6 +1,9 @@
 #include "title-page.typ"
+
 #set heading(numbering: "1.1")
+#set page(numbering: "1")
 #set text(lang: "hr")
+#counter(page).update(1)
 
 #outline(
 	title: "Sadržaj",
