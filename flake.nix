@@ -1,9 +1,6 @@
 {
   inputs = {
-    #FIXME: change nixpkgs url to nixos-unstable branch when typst gets added
-    #       and maybe change it to a stable branch when one with typst gets
-    #       released
-    nixpkgs.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     devshell = {
       url = "github:numtide/devshell";
