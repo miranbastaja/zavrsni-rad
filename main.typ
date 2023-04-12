@@ -43,14 +43,15 @@ korisničko sučelje korišteni su HTML5, CSS3 i Typescript koji se transpilira 
 Javascript.
 
 Serverski kod je moguće napraviti sa bilo kojim alatom koji može raditi sa HTTP
-protokolom i HTML dokumentima, a u ovom radu je izabran Rust programski jezik
-sa actix-web frameworkom. Te tehnologije su izabrane zbog odličnih
-karakteristika performanse i visoke kvalitete Rust jezika i alata za Rust jezik.
+protokolom i HTML dokumentima, a u ovom radu je izabran Rust @rust programski
+jezik sa actix-web @actix-web frameworkom. Te tehnologije su izabrane zbog
+odličnih karakteristika performanse i visoke kvalitete Rust jezika i alata za
+Rust jezik.
 
-Korištena baza podataka je PostgreSQL zbog vrhunske dokumentacije i odlične
-stabilnosti. Uz te alate korišteni korišteni su i Redis za spremanje podataka
-sesije, Astro za olakšanu izradu korisnićkog sučelja i za kompilaciju TSX i SCSS
-koda u HTML, Javascript i CSS.
+Korištena baza podataka je PostgreSQL @postgres zbog vrhunske dokumentacije i
+odlične stabilnosti. Uz te alate korišteni korišteni su i Redis @redis za
+spremanje podataka sesije, Astro @astro za olakšanu izradu korisnićkog sučelja
+i za kompilaciju TSX i SCSS koda u HTML, Javascript i CSS.
 
 = Arhitektura rada
 Ovaj rad podijeljen je na dva glavna dijela koja mogu operirati neovisno jedan
@@ -231,3 +232,6 @@ sender = "test@domain.com"
 auth_token = "my-secret-token"
 timeout_millis = 10000
 ```
+
+#pagebreak()
+#bibliography("works.yml")
