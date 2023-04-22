@@ -82,7 +82,36 @@ logikom. Pisanje oba servisa sa istim alatima nam omogućava lakši razvoj
 aplikacije pošto ne moramo dva puta kod za poslovnu logiku
 
 == Arhitektura web aplikacije u actix-web frameworku
-TODO
+Kako razumjeli bi strukturu web aplikacije u actix-webu prvo moramo znati
+nekoliko ključnih pojmova. Ti pojmovi su:
+
+/ URL: engleski akronim za `Universal Resource Locator`, to je putanja do nekog
+  sadržaja na internetu. Opći oblik URL-a je
+ `schema://domena:port/putanja?parametri#anchor`.
+
+/ ruta (engl. route): opći oblik putanje URL-a. Rute su glavni način kojim web
+  aplikacija razlikuje zahtjeve. Postoje dvije vrste ruta: statične i dinamične.
+  Dinamične rute nam dopuštaju da odgovorimo na više sličnih zahtjeva koristeći
+  istu logiku. Primjer dinamične rute iz ovog rada je `/tasks/{task_id}`.
+
+/ obradnik (engl. handler): funkcija koja primi HTTP zahtjev, obavi nekakav posao
+  i onda vrati HTTP odgovor. Tipično se jedan obradnih veže na jednu rutu.
+
+/ posredni sloj (engl. middleware): funkcija koja primi HTTP zahtjev, obavi
+  nekakav posao i onda oviseći o logici sloja ili vrati HTTP odgovor ili
+  proslijedi zahtjev obradniku.
+
+Svaka web aplikacija napravljena u actix-web frameworku mora sadržavati dvije
+glavne komponente. Te komponente su `HttpServer` struktura i `App` struktura.
+Obije te strukture obavljaju posao koji je nužan za rad aplikacije.
+`HttpServer` je zadužen za komunikaciju naše aplikacije s vanjskim svijetom
+što u praksi znači da se pomoću te strukture konfiguriraju postavke kao port,
+maksimalni broj konekcija, broj threadova koji procesiraju zahtjeve itd.
+`App` struktura je zadužena za svu unutarnju logiku naše aplikacije. U njoj
+definiramo rute, obradnike koji odgovaraju na te rute, posredne slojeve itd.
+U ovom radu postoje dvije instance `HttpServer` i `App` struktura. Jedan par za
+API servis i jedan za servis za korisničko sučelje. Usto postoje dva posredna
+sloja koja se bave autentikacijom korisnika, brojne rute i brojni obradnici.
 
 = Model podataka
 U bilo kojem softverskom sistemu najlakši način za razumjeti što sistem radi
