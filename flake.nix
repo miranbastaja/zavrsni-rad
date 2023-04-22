@@ -56,7 +56,7 @@
               help = "Compile the typst code into a PDF";
               category = "development";
               command = ''
-                ${pkgs.typst}/bin/typst ${srcfile} "${outfile}"
+                ${pkgs.typst}/bin/typst compile ${srcfile} "${outfile}"
               '';
             }
             {
@@ -64,7 +64,7 @@
               help = "Watch the inputs and recompile the PDF on changes";
               category = "development";
               command = ''
-                ${pkgs.typst}/bin/typst --watch ${srcfile} "${outfile}"
+                ${pkgs.typst}/bin/typst watch ${srcfile} "${outfile}"
               '';
             }
             {
