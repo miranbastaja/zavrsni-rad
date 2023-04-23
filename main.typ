@@ -204,6 +204,30 @@ polje u `users` tablici. Ova veza je jedan prema više (engl. „one to many”)
 što znači da korisnik može imati više zadataka, no svaki zadatak može
 posjedovati samo jedan korisnik.
 
+= Servis za korisničko sučelje
+TODO
+
+== Autentikacija sesijom
+Servis za korisničko sučelje provodi autentikaciju putem sesija. Autentikacija
+sesijom radi tako da korisnik pošalje HTTP zahtjev koji sadržava njihovo
+korisničko ime i lozinku na određenu rutu, u ovom slučaju rade `POST /login`
+zahtjev. Onda backend provjerava postoji li korisnik s tim korisničkim imenom
+u bazi podataka i odgovara li poslana lozinka spremljenoj. Ako su informacije
+koje je korisnik poslao točne server stvara novu sesiju za tog korisnika.
+To znači da server generira identifikacijski kod sesije, spremi taj
+identifikacijski kod u Redis uz nekoliko dodatnih informacija kao korisničko
+ime i onda korisniku pošalje HTTP kolačić koji sadržava identifikacijski kod
+sesije. Taj kolačić korisnik pošalje uz svaki zahtjev poslije autentikacije.
+Samu autentikaciju obavlja posredni sloj koji je postavljen ispred svih ruta
+koje zahtijevaju samo autentificirane korisnike kao što su `/tasks` i
+`/settings` rute. Posredni sloj provjerava je li korisnik uz zahtjev poslao
+gore navedeni kolačić i postoji li identifikacijski kod sesije sadržan u tom
+kolačiću. Ako identifikacijski kod postoji propušta zahtjev obradniku, a ako ne
+postoji korisnika pošalje na login stranicu s upozorenjem da mora biti
+autentificiran kako bi pristupio ruti na koju je poslao zahtjev.
+Za logiku autentikacije je zadužena actix-session biblioteka, a za spremanje
+sesija je zadužena Redis baza podataka.
+
 = API servis
 TODO
 
@@ -223,9 +247,6 @@ na zahtjev s HTTP odgovorom koji sadrži statusni kod 401 („Unauthorized”).
 U drugom slučaju, kada ključ postoji i kada je povezan s nekim korisnikom,
 posredni sloj zahtjev prosljeđuje obradniku zahtjeva zajedno s jednom dodatnom
 informacijom - identifikacijskim kodom korisnika.
-
-= Servis za korisničko sučelje
-TODO
 
 = Konfiguracija servisa
 Konfiguracija servisa je omogućena kroz konfiguracijsku datoteku u TOML formatu
