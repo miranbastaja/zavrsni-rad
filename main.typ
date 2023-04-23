@@ -99,7 +99,17 @@ nekoliko ključnih pojmova. Ti pojmovi su:
 
 / posredni sloj (engl. middleware): funkcija koja primi HTTP zahtjev, obavi
   nekakav posao i onda oviseći o logici sloja ili vrati HTTP odgovor ili
-  proslijedi zahtjev obradniku.
+  proslijedi zahtjev obradniku koji je zadužen za tu rutu.
+
+/ HTTP kolačić (engl. cookie): mala datoteka koja internet preglednik sprema po
+  zahtjevu poslužitelja. Kolačići se šalju uz svaki sljedeći zahtjev nakon što
+  su spremljeni sve dok ne isteknu. U ovom radu se koriste tijekom autentikacije
+  na servisu za korisničko sučelje.
+
+/ HTTP zaglavlje (engl. header): dodatna informacija koja se veže uz HTTP
+  zahtjev ili odgovor. Primjer zaglavlja koje se koristi u ovom radu je
+  `Location` zaglavlje. Ono se koristi na servisu za korisničko sučelje kod svih
+  formi kako bi korisnika preusmjerili na stranicu koju želimo da vidi.
 
 Svaka web aplikacija napravljena u actix-web frameworku mora sadržavati dvije
 glavne komponente. Te komponente su `HttpServer` struktura i `App` struktura.
