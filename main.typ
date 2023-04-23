@@ -71,11 +71,23 @@ spremištu ključ vrijednosti koje je dijeljeno između svih instanca tog servis
 Prepuštanje stanja sesija Redisu omogućava bezbolno horizontalno skaliranje
 servisa. U praksi, graf implementacije ovih servisa u slučaju kada nam je samo
 jedna instanca dovoljna izgleda ovako:
-{TODO: flowchart grafa implementacije sa jedon instancom}.
+
+// TODO: make typst use other word than Figure in the caption, currently not
+// possible but will be https://github.com/typst/typst/pull/283 gets merged
+#figure(
+	image("img/one-instance.drawio.png"),
+	caption: [Graf implementacije sa jedom instancom svakog servisa]
+)
 
 A kada nam je potrebno više instanca da bi odgovorili na sve dolazeće zahtjeve
 graf implementacije izgleda ovako:
-{TODO: flowchart grafa implementacije sa više instanca}
+
+// TODO: make typst use other word than Figure in the caption, currently not
+// possible but will be https://github.com/typst/typst/pull/283 gets merged
+#figure(
+	image("img/multi-instance.drawio.png"),
+	caption: [Graf implementacije sa više instanca svakog servisa]
+)
 
 Oba servisa su napisana u actix-web frameworku i dijele dio koda koji se bavi
 logikom. Pisanje oba servisa sa istim alatima nam omogućava lakši razvoj
