@@ -370,6 +370,22 @@ zadatka i on korisnika šalje na stranicu na kojoj može urediti zadatak.
 Ruta te stranice je `GET /tasks/{task_id}/edit`. Treći gumb služi za brisanje
 zadatka, a on šalje `POST` zahtjev na `/tasks/{task_id}/delete` rutu.
 
+=== Stranica za uređivanje zadatka
+Stranica za uređivanje zadataka nalazi se na `GET /tasks/{task_id}/edit` ruti.
+Na stranici postoji jedan obrazac na kojem korisnik može promijeniti status,
+naslov i tekst zadatka. Obrazac šalje `POST` zahtjev na `/tasks/{task_id}/edit`
+rutu.
+
+#figure(
+	image("img/pages/edit-task.png"),
+	caption: [Stranica za uređivanja zadataka]
+)
+
+#figure(
+	image("img/edit-task-form.png"),
+	caption: [Obrazac za uređivanja zadataka]
+)
+
 TODO
 
 == Autentikacija sesijom
