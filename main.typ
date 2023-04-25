@@ -386,6 +386,68 @@ rutu.
 	caption: [Obrazac za uređivanja zadataka]
 )
 
+=== Stranica za postavke
+Stranica za postavke nalazi se na `GET /settings` ruti, a postoji kako bi
+korisnik mogao promijeniti važne postavke vezane uz njihov račun. Na toj
+stranici postoje forme za promjenu API ključa, lozinke, adrese e-pošte.
+Usto postoji i forma za brisanje korisničkog računa.
+
+#figure(
+	image("img/pages/settings.png"),
+	caption: [Izgled stranice za postavke]
+)
+
+Prva forma koja postoji na stranici za postavke je forma koja prikazuje je li
+korisnik potvrdio svoju adresu e-pošte. U slučaju da nije potvrdio adresu jer
+nije dobio poruku postoji gumb kojim korisnik može zatražiti da mu se ponovo
+pošalje poruka za potvrdu. Ova forma šalje `POST` zahtjev na
+`/settings/resend-confirmation-email` rutu.
+
+#figure(
+	image("img/account-status-form.png"),
+	caption: [Izgled forme za status adrese e-pošte]
+)
+
+Forma za promjenu adrese e-pošte ima polje za unos nove adrese i zahtjeva
+potvrdu putem upisa korisnikove lozinke. Kada korisnik unese novu adresu dobije
+na nju poruku kojom može potvrditi da je nova adresa njihova. Ta forma šalje
+`POST` zahtjev na `/settings/email` rutu.
+
+#figure(
+	image("img/change-email-form.png"),
+	caption: [Izgled forme za promjenu adrese epošte]
+)
+
+Ispod forme za promjenu adrese e-pošte nalazi se forma za promjenu API ključa.
+API ključ se koristi pri autentikaciji na API servisu, a ovdje se ga korisnik
+može kopirati za korištenje ili promijeniti u slučaju da su, na primjer, prošli
+API ključ slučajno javno objavili. Ova forma šalje `POST` zahtjev na
+`/settings/api-key` rutu.
+
+#figure(
+	image("img/api-key-form.png"),
+	caption: [Izgled forme za promjenu API kljuća]
+)
+
+Sljedeća je forma za promjenu lozinke. Kako bi korisnik promijenio lozinku mora
+prvo potvrditi da znaju trenutačnu lozinku i onda dvaput unijeti novu. Forma za
+promjenu lozinke šalje `POST` zahtjev na `/settings/password` rutu.
+
+#figure(
+	image("img/change-password-form.png"),
+	caption: [Izgled forme za promjenu lozinke]
+)
+
+Zadnja je forma za brisanje korisničkog računa. Kada korisnik izbriše račun gubi
+sve zadatke i podatke vezane uz račun. Kako bi izbrisao račun, korisnik treba
+potvrditi trenutačno korisničko ime i lozinku. Ova forma šalje `POST` zahtjev na
+`/settings/delete-account` rutu.
+
+#figure(
+	image("img/delete-account-form.png"),
+	caption: [Izgled forme za brisanje korisničkog računa]
+)
+
 TODO
 
 == Autentikacija sesijom
