@@ -448,7 +448,27 @@ potvrditi trenutačno korisničko ime i lozinku. Ova forma šalje `POST` zahtjev
 	caption: [Izgled forme za brisanje korisničkog računa]
 )
 
-TODO
+== Dodatne rute
+Kako bi servis za korisničko sučelje radio, uz rute koje korisniku vraćaju HTML
+kod, tj. stranice potrebne su i dodatne rute koje procesiraju obrasce. Te rute
+su gore navedene pored opisa obrasca koji procesiraju.
+
+U servisu za korisničko sučelje postoje 12 ruta koje obrađuju forme, sve primaju
+jedino `POST` metodu zbog ograničenja HTML `<form>` elementa. Te rute su:
+- `/login` za pristup korisničkom računu
+- `/signup` za stvaranje novog korisničkog računa
+- `/logout` za izlazak iz računa
+- `/tasks` za stvaranje novog zadatka
+- `/tasks/{task_id}/delete` za brisanje postojećeg zadatka
+- `/tasks/{task_id}/toggle-status` za promjenu statusa postojećeg zadatka
+- `/tasks/{task_id}/edit` za uređivanje postojećeg zadatka
+- `/settings/api-key` za promjenu API ključa
+- `/settings/email` za promjenu korisnikove adrese e-pošte
+- `/settings/password` za promjenu korisnikove lozinke
+- `/settings/resend-confirmation-email` kojim korisnik može zatražiti da mu se
+  ponovo pošalje poruka za potvrdu adrese e-pošte
+- `/settings/delete-account` za brisanje korisnikovog računa
+
 
 == Autentikacija sesijom
 Servis za korisničko sučelje provodi autentikaciju putem sesija. Autentikacija
