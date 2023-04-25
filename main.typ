@@ -246,6 +246,35 @@ odgovor može dodati takozvanu flash poruku (engl. „flash message”) koja se
 koristi kako bi informirali korisnika o rezultatu njihovog zahtjeva. Ovakvim
 načinom razdjele poslova znatno olakšavamo testiranje stranica i ruta.
 
+== Flash poruke
+Flash poruke su glavni mehanizam kojim servis za korisničko sučelje vraća
+povratnu informaciju o uspjehu neke akcije korisniku. Bazirane su na HTTP
+kolačićima. Kada se stvara novi HTTP kolačić moguće mu je dodati
+tzv. „expires” polje koje web pregledniku pruža informaciju o koliko dugo bi
+trebao taj kolačić slati uz nasljedne zahtjeve. Ako `expires` polje postavimo
+na nulu to znači da će web preglednik samo jednom taj kolačić poslati uz
+zahtjev. U ovom radu se s dodatnih ruta vrate dvije informacije: kolačić koji
+sadržava poruku o uspjehu akcije i koji ima `expires` polje postavljeno na nulu
+i HTTP odgovor sa statusnim kodom 303 (`See Other`). To znači će kolačić koji je
+bio postavljen odmah isteći čim web preglednik otiđe na stranicu na koju ga
+odgovor upućuje. Sve stranice imaju implementiran mehanizam koji pristigle flash
+poruke formatira u HTML.
+
+// TODO: make typst use other word than Figure in the caption, currently not
+// possible but will be https://github.com/typst/typst/pull/283 gets merged
+#figure(
+	image("img/flash-message-success.png"),
+	caption: [Primjer flash poruke koja oznaćava da je akcija uspjela]
+)
+#figure(
+	image("img/flash-message-error.png"),
+	caption: [Primjer flash poruke koja oznaćava da akcija nije uspjela]
+)
+#figure(
+	image("img/flash-message-warning.png"),
+	caption: [Primjer flash poruke koja prikazuje upozorenje]
+)
+
 TODO
 
 == Autentikacija sesijom
