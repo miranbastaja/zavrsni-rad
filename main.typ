@@ -226,7 +226,26 @@ polje u `users` tablici. Ova veza je jedan prema više (engl. „one to many”)
 što znači da korisnik može imati više zadataka, no svaki zadatak može
 posjedovati samo jedan korisnik.
 
+
 = Servis za korisničko sučelje
+Servis za korisničko sučelje je zadužen za pružanje grafičkog korisničkog
+sučelja korisniku u obliku HTML web stranice. Kako bi uspješno pružali sve
+funkcije web aplikacije za upravljanje popisom zadataka potrebno je dizajnirati
+sučelje kojim će korisnik pristupiti tim funkcijama i potrebno je kroz dodatne
+rute pružiti funkcionalnosti koje nisu vezane uz grafičko sučelje. Zato je u
+ovom radu servis za korisničko sučelje podijeljen u dva dijela: rute koje
+pružaju stranice tj. rute koje na svaki zahtjev odgovaraju s HTML stranicom i
+na rute koje na svaki zahtjev obave neki posao i onda korisnika pošalju natrag
+na rutu koja pruža HTML stranicu. Razdjelom poslova pojednostavljeno
+implementaciju obradnika - za svaku stranicu znamo da uvijek mora vratiti odgovor
+s HTTP kodom 200 (`OK`) i HTML sadržajem, a za svaku dodatnu rutu znamo da
+uvijek mora vratiti odgovor s HTTP kodom 303 (`See Other`) i `Location`
+zaglavljem koje korisnika šalje natrag na stranicu. Na koju stranicu će ruta
+korisnika poslati ovisi o sadržaju korisnikova zahtjeva. Usto dodatna ruta u
+odgovor može dodati takozvanu flash poruku (engl. „flash message”) koja se
+koristi kako bi informirali korisnika o rezultatu njihovog zahtjeva. Ovakvim
+načinom razdjele poslova znatno olakšavamo testiranje stranica i ruta.
+
 TODO
 
 == Autentikacija sesijom
