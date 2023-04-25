@@ -325,6 +325,51 @@ Forma na signup stranici obrađuje zahtjeve na `POST /signup` rutu.
 	caption: [Izgled signup stranice]
 )
 
+=== Stranica za zadatke
+Stranica za zadatke postoji kako bi korisnik mogao pregledati sve zadatke koje
+je stvorio i kako bi mogao stvoriti nove zadatke. Nalazi se na `GET /tasks`
+ruti, a sastoji se od tri glavna dijela. Ti dijelovi su: forma za dodavanje
+novih zadataka pri vrhu stranice, popis neriješenih zadataka na sredini stranice
+i popis riješenih zadataka na dnu stranice. Dijelovi su poslagani u tom
+redoslijedu da bi korisniku bilo olakšano snalaženje u slučaju da ima mnogo
+zadataka.
+
+#figure(
+	image("img/pages/tasks.png"),
+	caption: [Izgled stranice za zadatke]
+)
+
+Forma za dodavanje novih zadataka ima polja za naslov zadatka i za puni tekst
+zadatka. Zadatak mora imati naslov, a puni tekst je opcionalno polje koje
+korisnik može koristiti ako želi detaljnije opisati zadatak. Forma šalje `POST`
+zahtjev na `/tasks` rutu.
+
+#figure(
+	image("img/add-task-form.png"),
+	caption: [Forma za dodavanje novog zadatka]
+)
+
+Kada korisnik prvo dođe na stranicu za pregled zadataka, svi zadaci su prikazani
+u sažetom obliku. U tom obliku se vidi samo naslov zadatka, a tekst i gumbovi za
+akcije su sakriveni. U punom obliku zadatka se vidi tekst kao i gumbovi za
+promjenu statusa zadatka, za uređivanje zadatka i za brisanje zadatka.
+
+#figure(
+	image("img/task-summary.png"),
+	caption: [Primjer zadatka u sažetom obliku]
+)
+
+#figure(
+	image("img/task-full.png"),
+	caption: [Primjer zadatka u punom obliku]
+)
+
+Prvi gumb je gumb za promjenu statusa zadatka, on šalje `POST` zahtjev na 
+`/tasks/{task_id}/toggle-status` rutu. Drugi gumb je gumb za uređivanje
+zadatka i on korisnika šalje na stranicu na kojoj može urediti zadatak.
+Ruta te stranice je `GET /tasks/{task_id}/edit`. Treći gumb služi za brisanje
+zadatka, a on šalje `POST` zahtjev na `/tasks/{task_id}/delete` rutu.
+
 TODO
 
 == Autentikacija sesijom
