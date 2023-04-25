@@ -293,6 +293,38 @@ web aplikacija i kako je napravljena.
 	caption: [Izgled index stranice]
 )
 
+=== Login i signup stranice
+Login stranica nalazi se na `GET /login` ruti, a postoji kako bi korisnik mogao
+pristupiti svom računu. Cijela stranica se sastoji od jedne forme koja obrađuje
+`POST` zahtjev na `/login` rutu. Ako je zahtjev uspješan, tj. ako je korisnik
+unio točno korisničko ime i lozinku, onda ga pošaljemo na stranicu za pregled
+svih zadataka. Naprotiv, ako je korisnik unio krive korisničke podatke vraćamo
+ga na login stranicu uz flash poruku koja opisuje da je krive podatke upisao.
+
+// TODO: make typst use other word than Figure in the caption, currently not
+// possible but will be https://github.com/typst/typst/pull/283 gets merged
+#figure(
+	image("img/pages/login.png"),
+	caption: [Izgled login stranice]
+)
+#figure(
+	image("img/pages/login-error.png"),
+	caption: [Izgled login stranice nakon neuspješnog pokušaja pristupa računu]
+)
+
+Signup stranica se nalazi na `GET /signup` ruti i postoji kao jedinu mjesto u
+ovoj web aplikaciji gdje korisnik može stvoriti novi račun. Pri stvaranju novog
+računa potrebno je unijeti adresu e-pošte koja će biti vezana uz taj račun i
+smisliti novo korisničko ime i lozinku. U slučaju da korisnik upiše korisničko
+ime ili adresu e-pošte koje već drugi korisnik koristi stvaranje novog računa ne
+uspije, a korisnik dobije flash poruku koja opisuje zašto nije uspjelo.
+Forma na signup stranici obrađuje zahtjeve na `POST /signup` rutu.
+
+#figure(
+	image("img/pages/signup.png"),
+	caption: [Izgled signup stranice]
+)
+
 TODO
 
 == Autentikacija sesijom
