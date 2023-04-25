@@ -281,6 +281,18 @@ Postoji šest stranica u ovom radu: index i login stranice, stranica
 za stvaranje novog računa, stranica za pregled svih zadataka, stranica za
 korisničke postavke i na kraju stranica za uređivanje postojećeg zadatka.
 
+=== Index stranica
+Index stranica je prva stranica koju korisnik vidi kada posjeti web aplikaciju.
+Nalazi se na `GET /` ruti, a u ovom radu indeks stranica opisuje čemu služi ova
+web aplikacija i kako je napravljena.
+
+// TODO: make typst use other word than Figure in the caption, currently not
+// possible but will be https://github.com/typst/typst/pull/283 gets merged
+#figure(
+	image("img/pages/index.png"),
+	caption: [Izgled index stranice]
+)
+
 TODO
 
 == Autentikacija sesijom
