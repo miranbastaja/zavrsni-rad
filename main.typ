@@ -491,10 +491,7 @@ autentificiran kako bi pristupio ruti na koju je poslao zahtjev.
 Za logiku autentikacije je zadužena actix-session biblioteka, a za spremanje
 sesija je zadužena Redis baza podataka.
 
-= API servis
-TODO
-
-== Autentikacija API ključevima
+= Autentikacija API servisa ključevima
 Za razliku od servisa za korisničko sučelje, sve rute na API servisu zahtijevaju
 autentikaciju. Autentikacija se provodi API ključem (engl. „API key”) koji
 korisnik može pribaviti u svojim korisničkim postavkama. Svaki zahtjev API
