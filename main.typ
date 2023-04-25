@@ -275,6 +275,12 @@ poruke formatira u HTML.
 	caption: [Primjer flash poruke koja prikazuje upozorenje]
 )
 
+== Stranice
+Stranice su rute na servisu za korisničko sučelje koje vraćaju HTML sadržaj.
+Postoji šest stranica u ovom radu: index i login stranice, stranica
+za stvaranje novog računa, stranica za pregled svih zadataka, stranica za
+korisničke postavke i na kraju stranica za uređivanje postojećeg zadatka.
+
 TODO
 
 == Autentikacija sesijom
