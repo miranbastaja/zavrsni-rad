@@ -3,6 +3,7 @@
 #set heading(numbering: "1.1")
 #set page(numbering: "1")
 #set text(lang: "hr")
+#set figure(supplement: [Slika])
 #counter(page).update(1)
 
 #outline(
@@ -72,8 +73,6 @@ Prepuštanje stanja sesija Redisu omogućava bezbolno horizontalno skaliranje
 servisa. U praksi, graf implementacije ovih servisa u slučaju kada nam je samo
 jedna instanca dovoljna izgleda ovako:
 
-// TODO: make typst use other word than Figure in the caption, currently not
-// possible but will be https://github.com/typst/typst/pull/283 gets merged
 #figure(
 	image("img/one-instance.drawio.png"),
 	caption: [Graf implementacije sa jedom instancom svakog servisa]
@@ -82,8 +81,6 @@ jedna instanca dovoljna izgleda ovako:
 A kada nam je potrebno više instanca da bi odgovorili na sve dolazeće zahtjeve
 graf implementacije izgleda ovako:
 
-// TODO: make typst use other word than Figure in the caption, currently not
-// possible but will be https://github.com/typst/typst/pull/283 gets merged
 #figure(
 	image("img/multi-instance.drawio.png"),
 	caption: [Graf implementacije sa više instanca svakog servisa]
@@ -143,8 +140,6 @@ Shema baze podataka se sastoji od tri tablice - `users`, `tasks` i
 `user_tokens`. Baza podataka je normalizirana i tablice su povezane stranim
 ključevima. @shema prikazuje dijagram pune sheme baze podataka.
 
-// TODO: make typst use other word than Figure in the caption, currently not
-// possible but will be https://github.com/typst/typst/pull/283 gets merged
 #figure(
 	image("img/db_schema.png"),
 	caption: [Dijagram sheme baze podataka]
@@ -260,8 +255,6 @@ bio postavljen odmah isteći čim web preglednik otiđe na stranicu na koju ga
 odgovor upućuje. Sve stranice imaju implementiran mehanizam koji pristigle flash
 poruke formatira u HTML.
 
-// TODO: make typst use other word than Figure in the caption, currently not
-// possible but will be https://github.com/typst/typst/pull/283 gets merged
 #figure(
 	image("img/flash-message-success.png"),
 	caption: [Primjer flash poruke koja oznaćava da je akcija uspjela]
@@ -286,8 +279,6 @@ Index stranica je prva stranica koju korisnik vidi kada posjeti web aplikaciju.
 Nalazi se na `GET /` ruti, a u ovom radu indeks stranica opisuje čemu služi ova
 web aplikacija i kako je napravljena.
 
-// TODO: make typst use other word than Figure in the caption, currently not
-// possible but will be https://github.com/typst/typst/pull/283 gets merged
 #figure(
 	image("img/pages/index.png"),
 	caption: [Izgled index stranice]
@@ -301,8 +292,6 @@ unio točno korisničko ime i lozinku, onda ga pošaljemo na stranicu za pregled
 svih zadataka. Naprotiv, ako je korisnik unio krive korisničke podatke vraćamo
 ga na login stranicu uz flash poruku koja opisuje da je krive podatke upisao.
 
-// TODO: make typst use other word than Figure in the caption, currently not
-// possible but will be https://github.com/typst/typst/pull/283 gets merged
 #figure(
 	image("img/pages/login.png"),
 	caption: [Izgled login stranice]
@@ -544,4 +533,4 @@ timeout_millis = 10000
 ```
 
 #pagebreak()
-#bibliography("works.yml")
+#bibliography(title: "Literatura", "works.yml")
