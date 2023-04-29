@@ -1,11 +1,11 @@
 #let title = "TODO web aplikacija s Rust backend-om"
-#let author = "Miran Bastaja"
+#let author = "Miran Bastaja, 4.E2"
 #let institution = (
 	name: "Tehnička škola Zagreb",
 	address: "Zagreb, Palmotićeva 84"
 )
-#let mentor = "Željko Vrabec"
-#let placeAndTime = "Zagreb, ožujak 2023."
+#let mentor = "Željko Vrabec, prof."
+#let placeAndTime = "Zagreb, travanj 2023."
 #set document(
 	author: author,
 	title: title
@@ -32,13 +32,13 @@
 
 #columns(2, [
 	#set align(left)
-	Mentor\
+	Mentor:\
 	#mentor
 
 	#colbreak()
 
 	#set align(right)
-	Učenik\
+	Učenik:\
 	#author
 ])
 

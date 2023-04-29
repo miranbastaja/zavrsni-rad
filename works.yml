@@ -32,3 +32,9 @@ astro:
   author: Astro Contributors
   url: https://astro.build/
   date: 2023-4-12
+
+zero2prod:
+  type: book
+  title: Zero To Production In Rust
+  author: Luca Palmieri
+  date: 2023-3-14
