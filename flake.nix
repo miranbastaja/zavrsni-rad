@@ -30,11 +30,11 @@
       in {
         packages.default = pkgs.stdenv.mkDerivation {
           pname = "zavrsni-rad";
-          version = "0.0.1";
+          version = "1.0.0";
           src = ./.;
           buildInputs = [pkgs.typst];
           buildPhase = ''
-            typst ${srcfile} "${outfile}"
+            typst compile ${srcfile} "${outfile}"
           '';
           installPhase = ''
             source $stdenv/setup
