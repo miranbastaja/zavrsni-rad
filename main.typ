@@ -4,7 +4,7 @@
 #set text(lang: "hr")
 #set figure(supplement: [Slika])
 
-#set par(leading: 0.8em, justify: true)
+#set par(leading: 1em, justify: true)
 #show par: set block(spacing: 0.75em)
 
 #set page(
@@ -29,6 +29,7 @@
 #include "sections/data-model.typ"
 #include "sections/frontend.typ"
 #include "sections/config.typ"
+#include "sections/conclusion.typ"
 
 #outline(
 	title: [Slike],
@@ -45,3 +46,6 @@
 #pagebreak()
 
 #bibliography(title: "Literatura", "works.yml", style: "chicago-author-date")
+#pagebreak()
+
+#include "end-page.typ"
